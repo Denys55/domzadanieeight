@@ -39,13 +39,13 @@ public class MyArrayList <E> {
 
 
     //удаляет элемент под индексом
-    public E remove(int index){
-        E tmp = array[index];
+    public void remove(int index){
         if(index < size()){
             array[index] = null;
             createNewArray(array);
         }
-        return tmp;
+        pointer--;
+
 
     }
 
@@ -69,7 +69,7 @@ public class MyArrayList <E> {
         for(int i = 0; i<array.length; i++){
             array[i]=null;
         }
-
+        array = ((E[])new Object[initialCapacity]);
     }
 
     //размер массива
@@ -121,6 +121,7 @@ public class MyArrayList <E> {
         System.out.println(arr.get(0));
         arr.clear();
         System.out.println(arr.size());
+        System.out.println(arr.length());
 
     }
 }

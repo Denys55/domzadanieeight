@@ -17,14 +17,14 @@ public class MyHashMap<K, V> {
     //добавляет пару ключ + значение
     public void put(K key, V value){
         Node<K, V> newNode = new Node<>(key, value);
-        int index = abs(newNode.hash());
+        int index = key.hashCode()% hashTable.length-1;
         hashTable[index] = newNode;
         size++;
     }
 
     //удаляет пару по ключу
     public void remove(Object key){
-        int index = key.hashCode()% hashTable.length;
+        int index = key.hashCode()% hashTable.length-1;
         hashTable[index]=null;
         size--;
 
@@ -45,7 +45,7 @@ public class MyHashMap<K, V> {
 
     //возвращает значение(Object value) по ключу
     public V get(Object key){
-        int index = key.hashCode()% hashTable.length;
+        int index = key.hashCode()% hashTable.length-1;
         return hashTable[index].getValue();
     }
 
@@ -65,7 +65,7 @@ public class MyHashMap<K, V> {
         }
 
         private int hash(){
-            return key.hashCode()%hashTable.length;
+            return key.hashCode()%hashTable.length-1;
         }
         private K getKey(){
             return key;
